@@ -1,18 +1,54 @@
-:root {
-/* Palette */
---bg: #0b0d12; /* deep slate */
---surface: #0f131a;
---surface-2: #161b24;
---border: #232a35;
---text: #d4dae3;
---text-muted: #9aa5b1;
---text-strong: #ffffff;
---accent: #3b82f6; /* blue-500 */
---success: #10b981; /* emerald-500 */
+/* creating a light/dark theme for the tokens */
+/* Dark defaults */
+:root,
+html[data-theme="dark"],
+html:not([data-theme]) {
+  /* palette */
+  --bg: #0b0d12;
+  --surface: #0f131a;
+  --surface-2: #161b24;
+  --border: #232a35;
+  --text: #d4dae3;
+  --text-muted: #9aa5b1;
+  --text-strong: #ffffff;
+  --accent: #3b82f6;
+  --success: #10b981;
 
+  /* navbar & pills */
+  --nav-bg: var(--bg);
+  --pill-bg: var(--surface-2);
+  --hover-start: #ffffff;
+  --hover-end: #e8f0fe;
+  --glow: rgba(255,255,255,0.28);
+  --glow-soft: rgba(255,255,255,0.12);
 
-/* Spacing */
---space-1: .25rem; --space-2: .5rem; --space-3: .75rem; --space-4: 1rem; --space-5: 1.5rem;
---radius: 12px;
---container: 1100px;
+  /* layout */
+  --space-1: .25rem;
+  --space-2: .5rem;
+  --space-3: .75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --radius: 12px;
+  --container: 1100px;
+}
+
+/* Light overrides bound to <html data-theme="light"> */
+html[data-theme="light"] {
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --surface-2: #f6f7f9;
+  --border: #e5e7eb;
+  --text: #111827;
+  --text-muted: #4b5563;
+  --text-strong: #000000;
+  --accent: #2563eb;
+  --success: #059669;
+
+  --nav-bg: #ffffff;
+  --pill-bg: #f6f7f9;
+  --hover-start: #ffffff;
+  --hover-end: #e8f0fe;
+
+  --glow: rgba(23,23,23,0.12);
+  --glow-soft: rgba(23,23,23,0.08);
 }

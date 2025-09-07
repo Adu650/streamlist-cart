@@ -1,0 +1,47 @@
+/* Adding a light mode so we have a light/dark mode -- JC */
+
+:root {
+  /* dark as default */
+  --page-bg: #000;
+  --page-fg: #fff;
+
+  --nav-bg: #000;
+  --text: #fff;
+  --muted: #2a2a2a;
+
+  --pill-bg: #0f0f0f;
+  --hover-start: #ffffff;
+  --hover-end: #dfe9f3;
+
+  --glow: rgba(255,255,255,0.28);
+  --glow-soft: rgba(255,255,255,0.12);
+}
+
+[data-theme="light"] {
+  --page-bg: #ffffff;
+  --page-fg: #111827;
+
+  --nav-bg: #ffffff;
+  --text: #111827;
+  --muted: #e5e7eb;
+
+  --pill-bg: #f6f7f9;
+  --hover-start: #ffffff;
+  --hover-end: #e8f0fe;
+
+  --glow: rgba(23,23,23,0.12);
+  --glow-soft: rgba(23,23,23,0.08);
+}
+
+html, body {
+  height: 100%;
+  background: var(--page-bg);
+  color: var(--page-fg);
+}
+
+.card {
+  background: var(--pill-bg);
+  border: 1px solid var(--muted);
+  border-radius: 16px;
+  padding: 1rem;
+}
