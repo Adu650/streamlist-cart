@@ -1,9 +1,8 @@
-/*modified to add light/dark theme selection*/
-
+/*Modded navbar to include theme toggle and cart item count badge -- JC */
 import React, { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useCart } from '../../hooks/useCart';
-import { FiHome, FiLayers, FiInfo, FiShoppingCart } from 'react-icons/fi';
+import { FiHome, FiLayers, FiInfo, FiShoppingCart, FiSearch } from 'react-icons/fi';
 import './NavBar.css';
 
 function getInitialTheme() {
@@ -51,6 +50,11 @@ export default function NavBar() {
           <NavLink to="/subscriptions" className={linkClass} onClick={() => setOpen(false)}>
             <FiLayers className="icon" aria-hidden="true" />
             <span>Subscriptions</span>
+          </NavLink>
+
+          <NavLink to="/search" className={linkClass} onClick={() => setOpen(false)}>
+            <FiSearch className="icon" aria-hidden="true" />
+            <span>Search</span>
           </NavLink>
 
           <NavLink to="/about" className={linkClass} onClick={() => setOpen(false)}>
