@@ -1,7 +1,166 @@
-.nav { position: sticky; top: 0; z-index: 10; background: var(--surface); border-bottom: 1px solid var(--border); }
-.nav__inner { display: flex; align-items: center; justify-content: space-between; padding: var(--space-3) var(--space-4); }
-.brand { font-weight: 800; letter-spacing: 0.3px; color: var(--text-strong); }
-.nav__links { display: flex; gap: var(--space-3); }
-.nav__links a { padding: .4rem .7rem; border-radius: .5rem; color: var(--text); }
-.nav__links a.active, .nav__links a:hover { background: var(--surface-2); color: var(--text-strong); }
-.badge { margin-left: .4rem; background: var(--accent); color: white; border-radius: 1rem; padding: 0 .5rem; font-size: .8rem; }
+/* modified the NavBar to have more style, changed the size of the company name and added a hover effect to it -- JC */
+
+/* wrapper */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--nav-bg);
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: saturate(120%) blur(6px);
+}
+
+.nav__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* space brand left, controls right */
+.nav__inner > .spacer { flex: 1 1 auto; }
+
+/* brand */
+.brand {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+}
+
+.brand--xl {
+  font-size: 1.75rem;
+  line-height: 1;
+  transition: text-shadow .2s ease, transform .2s ease;
+}
+.brand--xl:hover,
+.brand--xl:focus-visible {
+  text-shadow: 0 0 12px var(--glow);
+  transform: translateY(-0.5px);
+}
+
+/* links row */
+.nav__links {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+/* pills */
+.pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;           /* space between icon and label */
+  padding: 0.5rem 0.95rem;
+  border-radius: 9999px;
+  border: 1px solid var(--border);
+  text-decoration: none;
+  color: var(--text);
+  background: var(--pill-bg);
+  transition: background .2s, color .2s, border-color .2s, box-shadow .2s, transform .06s;
+}
+
+.pill:hover,
+.pill:focus-visible {
+  background: linear-gradient(135deg, var(--hover-start), var(--hover-end));
+  color: #000;
+  border-color: transparent;
+  box-shadow: 0 0 0 2px var(--glow), 0 8px 20px var(--glow-soft);
+  outline: none;
+}
+
+.pill:active { transform: translateY(1px); }
+.pill.active {
+  background: linear-gradient(135deg, var(--hover-start), var(--hover-end));
+  color: #000;
+  border-color: transparent;
+  box-shadow: 0 0 0 2px var(--glow);
+}
+
+/* cart badge */
+.cartLink { position: relative; }
+.badge {
+  position: absolute;
+  top: -6px; right: -8px;
+  min-width: 20px; height: 20px;
+  padding: 0 6px; border-radius: 9999px;
+  background: #ff4d4f; color: #fff;
+  font-size: 0.7rem; font-weight: 700;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+
+/* theme button */
+.themeBtn {
+  border: 1px solid var(--border);
+  background: var(--pill-bg);
+  color: var(--text);
+  border-radius: 12px;
+  height: 42px; width: 42px;
+  display: inline-flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: border-color .2s, box-shadow .2s, transform .06s;
+}
+.themeBtn:hover,
+.themeBtn:focus-visible {
+  border-color: transparent;
+  box-shadow: 0 0 0 2px var(--glow);
+  outline: none;
+}
+.themeBtn:active { transform: translateY(1px); }
+
+/* mobile menu button */
+.menuBtn {
+  border: 1px solid var(--border);
+  background: var(--pill-bg);
+  color: var(--text);
+  border-radius: 12px;
+  height: 42px; width: 42px;
+  display: none; align-items: center; justify-content: center;
+}
+.menuBtn__bar {
+  width: 18px; height: 2px; background: var(--text);
+  border-radius: 2px; display: block;
+}
+.menuBtn__bar + .menuBtn__bar { margin-top: 3px; }
+
+/* layout for right side controls */
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* icons next to nav items */
+.icon {
+  font-size: 18px; /* react-icons size */
+  width: 18px;
+  height: 18px;
+  line-height: 0;
+  flex: 0 0 auto;
+}
+
+/* responsive */
+@media (max-width: 768px) {
+  .menuBtn { display: inline-flex; }
+  .nav__links {
+    position: absolute;
+    top: 64px; right: 12px; left: 12px;
+    padding: 10px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: var(--surface);          /* theme-aware card */
+    box-shadow: 0 10px 30px var(--glow-soft);
+    display: none; flex-direction: column; gap: 8px;
+  }
+  .nav__links.open { display: flex; }
+}
+
+@media (max-width: 640px) {
+  .brand--xl { font-size: 1.4rem; }
+  .pill { padding: 0.45rem 0.8rem; }
+  .icon { font-size: 16px; width: 16px; height: 16px; }
+}
